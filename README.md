@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @MrZH6
 - 👀 I’m interested in Python, VBA, SQL
-- 🌱 I’m currently learning Data analytics
+- 🌱 I’m currently learning Data analytics, Networking
 <!---
 - 💞️ I’m looking to collaborate on ...
 - 📫 How to reach me ...
