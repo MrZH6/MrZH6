@@ -1,0 +1,137 @@
+
+### STR.MAKETRANS, STR.TRANSLATE ###
+# str.maketrans() (vytvoření dict ze dvou stringů) --> str.translate() nahradí znaky dle dict ###
+    s = "test string"
+    x = [chr(x) for x in range(97,123)]
+    alpha = "".join(x)
+    shift = 7
+    alpha_shift = alpha[shift:] + alpha[:shift]
+    trans_dict = str.maketrans(alpha,alpha_shift)
+    s_new = s.translate(trans_dict)
+    print(s_new)
+
+### ITERTOOLS ###
+    # itertools.groupby()
+
+    # itertool.combinations()
+        list(itertools.combinations('ABC', 2))
+        # --> [('A', 'B'), ('A', 'C'), ('B', 'C')]
+    # itertools.combinations_with_replacement()
+        list(itertools.combinations_with_replacement([1,2,3],2))
+        # --> [(1, 1), (1, 2), (1, 3), (2, 2), (2, 3), (3, 3)]
+    # itertools.permutation()
+        itertools.permutations([1, 2, 3], 2)
+        # --> [(1, 2), (1, 3), (2, 1), (2, 3), (3, 1), (3, 2)]
+    # itertools.product()[1,2,3],repeat = 2)
+        itertools.product([1,2,3],repeat = 2)
+        # This tool computes the cartesian product of input iterables.
+        # --> [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (3, 1), (3, 2), (3, 3)]
+
+### BEAUTIFUL SOUP ###
+# find_all(name, attrs, recursive, string, limit, **kwargs)
+# has_attr("data-username") najde toto --> <tr data-username="g964">
+
+### REGULAR EXPRESSIONS ###
+# re.fullmatch
+
+### BREAK INNER LOOP ###
+    for x in xrange(10):
+        for y in xrange(10):
+            print(x*y)
+            if x*y > 50:
+                break
+        else:
+            continue  # only executed if the inner loop did NOT break
+        break  # only executed if the inner loop DID break
+
+### ZIP() ###
+# spojí dva a více iterátorů do sebe jako tuple
+# https://realpython.com/python-zip-function/
+    integers = [1, 2, 3]
+    letters = ['a', 'b', 'c']
+    floats = [4.0, 5.0, 6.0]
+    zipped = zip(integers, letters, floats)  # Three input iterables
+    list(zipped) # --> [(1, 'a', 4.0), (2, 'b', 5.0), (3, 'c', 6.0)]
+## If we want to extract the zip, we have to use the same zip()function.
+## But we have to add an asterisk(*) in front of that list you get from the zipped variable.
+    numList = [19, 21, 46]
+    strList = ['one', 'two', 'three']
+    outputA = zip(numList, strList)
+    x, y = zip(*outputA )
+    print('numList = ', x) # --> (19, 21, 46)
+    print('strlist = ', y) # --> ('one', 'two', 'three')
+
+
+### MAP(fun,iter) ###
+# Returns a list of the results after applying the given function
+# to each item of a given iterable (list, tuple etc.)
+    # Return double of n
+    def addition(n):
+        return n + n
+    # We double all numbers using map()
+    numbers = (1, 2, 3, 4)
+    result = map(addition, numbers)
+    print(list(result)) --> [2, 4, 6, 8]
+
+
+### ENUMERATE ###
+# Enumerate() method adds a counter to an iterable
+# and returns it in a form of enumerate object.
+# This enumerate object can then be used directly in for loops
+# or be converted into a list of tuples using list() method.
+    l1 = ["eat","sleep","repeat"]
+    obj1 = enumerate(l1)
+    print list(enumerate(l1)) # --> [(0, 'eat'), (1, 'sleep'), (2, 'repeat')]
+
+### ANY() ###
+# Python any() function accepts iterable (list, tuple, dictionary etc.)
+# as an argument and return true if any of the element in iterable is true,
+# else it returns false. If iterable is empty then any() method returns false.
+
+
+### LJUST(width, fillchar) ###
+    str = "this is string example....wow!!!";
+    print str.ljust(50, '0') # --> this is string example....wow!!!000000000000000000
+
+
+### 2 for cykles comprehension ###
+    x=[i+j for i in ["1","2"] for j in ["a","b","c","d"]]
+    # --> ['1a', '1b', '1c', '1d', '2a', '2b', '2c', '2d']
+
+
+### BYTES ###
+# byte() converts an object to immutable byte represented object of given size and data.
+    bytes() # --> b''
+    bytes(67) # --> b'\x00\x00\x00\x00\x00.......
+    bytes([67]) # --> b'C'
+    bytes([67]).decode() # --> 'C'
+    bytes("Österreich","latin1") # --> b'\xd6sterreich'
+    bytes("Österreich","ascii") # --> UnicodeEncodeError: 'ascii' codec can't encode character '\xd6'
+                                      # in position 0: ordinal not in range(128)
+
+
+### SPLIT ###
+# Consecutive delimeter returns an empty string for each repeated delimeter
+    "123x123xx123xxx123".split("x") # --> ['123', '123', '', '123', '', '', '123']
+    "123 123  123   123".split(" ") # --> ['123', '123', '', '123', '', '', '123']
+    # BUT!!!
+    "123 123  123   123".split() # --> ['123', '123', '123', '123']
+
+
+### FORMAT ###
+    "%s %s" % ("abc", "zzz") # --> 'abc zzz'
+
+    x = "abc"
+    f"{x}def" # --> "abcdef"
+
+    "{} {} {}".format("aaa","bbb","ccc") # --> 'aaa bbb ccc'
+
+### DEQUE (Doubly Ended Queue) ###
+    # provides an O(1) time complexity for append and pop operations
+    import collections
+    de = collections.deque([1,2,3])
+    de.append(4)
+    de.appendleft(6)
+    # --> deque([6, 1, 2, 3, 4])
+
+
